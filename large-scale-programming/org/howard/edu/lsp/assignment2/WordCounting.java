@@ -9,7 +9,15 @@ public class WordCounting {
     public static void main(String[] args) {
         String wordsPath = "words.txt";
 
-        ArrayList<String> wordStrings = new ArrayList<>()
+        // check if the file exists 
+        File file = new File(wordsPath);
+        if (file.exists()){
+            // read file
+            ArrayList<String> wordStrings = new ArrayList<>(); 
+
+        }
+
+        
     }
 
 }
