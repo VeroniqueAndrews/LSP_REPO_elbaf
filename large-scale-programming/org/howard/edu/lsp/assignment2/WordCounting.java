@@ -13,7 +13,15 @@ public class WordCounting {
         File file = new File(wordsPath);
         if (file.exists()){
             // read file
-            ArrayList<String> wordStrings = new ArrayList<>(); 
+            ArrayList<String> wordStrings = new ArrayList<>();
+            try{
+                Scanner scanner = new Scanner(file);
+
+                //add words from file to array 
+                while (scanner.hasNext());
+                String word = scanner.next();
+                wordStrings.add(word);
+            } 
 
         }
 
