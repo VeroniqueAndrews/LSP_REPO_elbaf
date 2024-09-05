@@ -15,22 +15,24 @@ public class WordCounting {
             // read file
             HashMap<String, Integer> wordCounts = new HashMap<>();
              try {
-                Scanner scanner = new Scanner(file);
+                try (Scanner scanner = new Scanner(file)) {
+                    //add words from file to hash map
+                    while (scanner.hasNext()){
+                         String word = scanner.next();
+                    
+                    if (word.length() > 3) {
+                        word = word.toLowerCase();
+                        wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
 
-                //add words from file to hash map
-                while (scanner.hasNext());
-                String word = scanner.next();
-                
-                if (word.length() > 3) {
-                    word = word.toLowerCase();
-                    wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+                    }
 
+                    //print map 
+                    for(String key : wordCounts.keySet()){
+                        System.out.println(key + " | " + wordCounts.get(key));
+                    }
+                    }
                 }
-
-                //print map 
-                for(String key : wordCounts.keySet()){
-                    System.out.println(key + " | " + wordCounts.get(key));
-                }
+               
                 
             } catch (FileNotFoundException e) {
                 System.out.println("words.txt not found");
