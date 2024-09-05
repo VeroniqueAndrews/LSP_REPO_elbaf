@@ -27,6 +27,11 @@ public class WordCounting {
                     wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
 
                 }
+
+                //print map 
+                for(String key : wordCounts.keySet()){
+                    System.out.println(key + " | " + wordCounts.get(key));
+                }
                 
             } 
 
