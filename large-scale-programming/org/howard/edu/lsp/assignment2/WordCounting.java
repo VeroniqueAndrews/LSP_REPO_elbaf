@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class WordCounting {
     public static void main(String[] args) {
-        String wordsPath = "words.txt";
+        String wordsPath = "org\\howard\\edu\\lsp\\assignment2\\words.txt";
 
         // check if the file exists 
         File file = new File(wordsPath);
