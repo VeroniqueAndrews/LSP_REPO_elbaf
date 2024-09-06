@@ -1,1 +1,1 @@
-I felt happy because I saw the 365 others were happy and because I knew I should feel happy, but I wasn’t really happy.
+Design  46 46 46 46 46 100 and code a program that reads a text file, and counts the number of times each 100 word that it contains appears 100

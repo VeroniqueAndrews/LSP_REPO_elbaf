@@ -20,6 +20,9 @@ public class WordCounting {
                     while (scanner.hasNext()){
                          String word = scanner.next();
                     
+                    if (word.equals("100")){
+                        break;
+                    }
                     if (word.length() > 3) {
                         word = word.toLowerCase();
                         wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
