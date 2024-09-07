@@ -24,8 +24,11 @@ public class WordCounting {
                         break;
                     }
                     if (word.length() > 3) {
+                        word = word.replaceAll("\\s+","");
                         word = word.toLowerCase();
+                        word = word.replaceAll("[^a-zA-Z ]", "");
                         wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+
 
                     }    
                     }

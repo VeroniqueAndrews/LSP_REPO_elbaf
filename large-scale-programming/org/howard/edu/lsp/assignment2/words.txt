@@ -1,1 +1,1 @@
-Design  46 46 46 46 46 100 and code a program that reads a text file, and counts the number of times each 100 word that it contains appears 100
+Design and code a program that reads a text file -, and counts the number of times each word that it contains appears 100.
