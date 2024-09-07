@@ -23,10 +23,11 @@ public class WordCounting {
                     if (word.equals("100")){
                         break;
                     }
-                    if (word.length() > 3) {
-                        word = word.replaceAll("\\s+","");
-                        word = word.toLowerCase();
-                        word = word.replaceAll("[^a-zA-Z ]", "");
+
+                    word = word.replaceAll("[^a-zA-Z ]", "");
+
+                    if (word.length() > 3 && !word.isEmpty()) {
+                        word = word.replaceAll("\\s+","").toLowerCase();
                         wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
 
 
