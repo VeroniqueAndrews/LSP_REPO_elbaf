@@ -57,8 +57,8 @@ public class Calculator {
     /**
      * Sums all the elements of an integer array.
      * 
-     * @param numbers An array of integers to sum.
-     * @return The sum of all integers in the array.
+     * @param numbers array of integers to sum.
+     * @return  sum of all integers in the array.
      */
     public static int sum(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
