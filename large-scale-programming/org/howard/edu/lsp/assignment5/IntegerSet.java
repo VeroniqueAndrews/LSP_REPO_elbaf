@@ -1,5 +1,5 @@
-package large-scale-programming.org.howard.edu.lsp.assignment5;
-
+import java.util.ArrayList;
+import java.util.List;
 public class IntegerSet  {
 	// Store the set elements in an ArrayList.
 	private List<Integer> set = new ArrayList<Integer>();
@@ -14,7 +14,9 @@ public class IntegerSet  {
 	}
 
 	// Clears the internal representation of the set. 5 pts.
-public void clear() {…};
+public void clear() {
+	set.clear();
+};
 
 // Returns the length of the set. 5 pts.
 public int length() {…}; // returns the length
