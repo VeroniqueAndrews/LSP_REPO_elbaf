@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class IntegerSet  {
 	// Store the set elements in an ArrayList.
-	private List<Integer> set = new ArrayList<Integer>();
+	private List<Integer> set = new ArrayList<>();
 
 	// Default Constructor
 	public IntegerSet() {
@@ -19,17 +19,42 @@ public void clear() {
 };
 
 // Returns the length of the set. 5 pts.
-public int length() {…}; // returns the length
+public int length() {
+	return(set.size());
+}; // returns the length
 
 /*
               * Returns true if the 2 sets are equal, false otherwise;
  * Two sets are equal if they contain all of the same values in ANY order.  This overrides
  * the equal method from the Object class. 10 pts.
 */
-public boolean equals(Object o) {…}; 
+@Override
+public boolean equals(Object o) {
+    if (this == o) {
+        return true; 
+    }if (!(o instanceof IntegerSet)) {
+        return false;  
+    }
+    
+    IntegerSet set2 = (IntegerSet) o;
+    
+    if (this.set1.size() != set2.set.size()) {
+        return false;
+    }
+
+    for (int item : set) {
+        if (!set2.set.contains(item)) {
+            return false;  
+        }
+    }
+    
+    return true;  
+};
 
 // Returns true if the set contains the value, otherwise false. 5 pts.
-public boolean contains(int value) {…};    
+public boolean contains(int value) {
+	
+};    
 // Returns the largest item in the set. 5 pts.
 public int largest()  {…}; 
 
@@ -61,3 +86,4 @@ boolean isEmpty();
 // the Object class. 5 pts.
 public String toString() {…};	// return String representation of your set
 
+}
