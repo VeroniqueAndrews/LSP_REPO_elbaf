@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class IntegerSet  {
 	// Store the set elements in an ArrayList.
@@ -56,13 +57,21 @@ public boolean contains(int value) {
 	return( set.contains(value));
 };    
 // Returns the largest item in the set. 5 pts.
-public int largest()  {…}; 
+public int largest()  {
+	return Collections.max(set);
+}; 
 
 // Returns the smallest item in the set. 5 pts.
-public int smallest()  {…};
+public int smallest()  {
+	return Collections.min(set);
+};
 
 // Adds an item to the set or does nothing it already there. 5 pts.	
-public void add(int item) {…}; // adds item to the set or does nothing if it is in set
+public void add(int item) {
+	if (!set.contains(item)){
+		set.add(item);
+	}
+}; // adds item to the set or does nothing if it is in set
 
 	// Removes an item from the set or does nothing if not there. 5 pts.
 public void remove(int item) {
@@ -85,7 +94,7 @@ public void diff(IntegerSet intSetb){
 }; // set difference, i.e. s1 - s2
 
 // Set complement, all elements not in s1. 11 pts.
-public void complement(IntegerSet intSetb) { …}
+public void complement(IntegerSet intSetb) { …};
 
 // Returns true if the set is empty, false otherwise. 5 pts.
 boolean isEmpty(){
