@@ -1,3 +1,4 @@
+import com.sun.jdi.IntegerType;
 import com.sun.jdi.connect.Connector;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -96,7 +97,7 @@ public void diff(IntegerSet intSetb){
 
 // Set complement, all elements not in s1. 11 pts.
 public void complement(IntegerSet intSetb) {
-	ArrayList<Integer> setComplement = new ArrayList<>();
+	IntegerSet setComplement = new IntegerSet();
 	for (int item: intSetb.set){
 		if(!this.set.contains(item)){
 			setComplement.add(item);
