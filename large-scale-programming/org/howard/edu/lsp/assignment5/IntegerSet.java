@@ -1,5 +1,3 @@
-import com.sun.jdi.IntegerType;
-import com.sun.jdi.connect.Connector;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,13 +33,14 @@ public int length() {
 public boolean equals(Object o) {
     if (this == o) {
         return true; 
-    }if (!(o instanceof IntegerSet)) {
+    }
+	if (!(o instanceof IntegerSet)) {
         return false;  
     }
     
     IntegerSet set2 = (IntegerSet) o;
     
-    if (this.set1.size() != set2.set.size()) {
+    if (this.set.size() != set2.set.size()) {
         return false;
     }
 
