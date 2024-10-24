@@ -1,123 +1,192 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-public class IntegerSet  {
-	// Store the set elements in an ArrayList.
-	private List<Integer> set = new ArrayList<>();
 
-	// Default Constructor
-	public IntegerSet() {
-	}
+/**
+ * IntegerSet contains adding, removing, union, intersection, and other set operations.
+ */
+public class IntegerSet {
 
-	// Constructor if you want to pass in already initialized
-	public IntegerSet(ArrayList<Integer> set) {
-		this.set = set;
-	}
+    // Store elements in an ArrayList.
+    private List<Integer> set = new ArrayList<>();
 
-	// Clears the internal representation of the set. 5 pts.
-public void clear() {
-	set.clear();
-};
-
-// Returns the length of the set. 5 pts.
-public int length() {
-	return(set.size());
-}; // returns the length
-
-/*
- * Returns true if the 2 sets are equal, false otherwise.
- * Two sets are equal if they contain all of the same values in ANY order.  This overrides
- * the equal method from the Object class. 10 pts.
-*/
-@Override
-public boolean equals(Object o) {
-    if (this == o) {
-        return true; 
-    }
-	if (!(o instanceof IntegerSet)) {
-        return false;  
-    }
-    
-    IntegerSet set2 = (IntegerSet) o;
-    
-    if (this.set.size() != set2.set.size()) {
-        return false;
+    /**
+     * Creates empty IntegerSet.
+     */
+    public IntegerSet() {
     }
 
-    for (int item : set) {
-        if (!set2.set.contains(item)) {
-            return false;  
+    /**
+     * 
+     * @param set ArrayList of integers to initialize the set.
+     */
+    public IntegerSet(ArrayList<Integer> set) {
+        this.set = set;
+    }
+
+    /**
+     * Clears the elements in the set.
+     */
+    public void clear() {
+        set.clear();
+    }
+
+    /**
+     * Returns number of elements in set.
+     * 
+     * @return the size of the set.
+     */
+    public int length() {
+        return set.size();
+    }
+
+    /**
+     * Checks if two sets are equal.
+     * Two sets are equal if they contain the same elements in any order.
+     * 
+     * @param o The object to compare against.
+     * @return true if the two sets are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof IntegerSet)) {
+            return false;
+        }
+
+        IntegerSet set2 = (IntegerSet) o;
+
+        if (this.set.size() != set2.set.size()) {
+            return false;
+        }
+
+        for (int item : set) {
+            if (!set2.set.contains(item)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if set contains a value.
+     * 
+     * @param value the integer to check for.
+     * @return true if the set contains the value, false if it does not.
+     */
+    public boolean contains(int value) {
+        return set.contains(value);
+    }
+
+    /**
+     * Returns the largest element in the set.
+     * 
+     * @return the largest integer in the set.
+     */
+    public int largest() {
+        return Collections.max(set);
+    }
+
+    /**
+     * Returns the smallest element in the set.
+     * 
+     * @return the smallest integer in the set.
+     */
+    public int smallest() {
+        return Collections.min(set);
+    }
+
+    /**
+     * Adds item to the set, unless it is already present.
+     * 
+     * @param item the integer to add to the set.
+     */
+    public void add(int item) {
+        if (!set.contains(item)) {
+            set.add(item);
         }
     }
-    
-    return true;  
-}
 
-// Returns true if the set contains the value, otherwise false. 5 pts.
-public boolean contains(int value) {
-	return( set.contains(value));
-}    
-// Returns the largest item in the set. 5 pts.
-public int largest()  {
-	return Collections.max(set);
-} 
+    /**
+     * Removes an item from the set if it exists
+     * 
+     * @param item the integer to remove from the set.
+     */
+    public void remove(int item) {
+        set.remove(Integer.valueOf(item));
+    }
 
-// Returns the smallest item in the set. 5 pts.
-public int smallest()  {
-	return Collections.min(set);
-}
+    /**
+     * Creates the union of this set with another set.
+     * The union includes all elements from both sets.
+     * 
+     * @param intSetb the second set to join with the first.
+     */
+    public void union(IntegerSet intSetb) {
+        for (int item : intSetb.set) {
+            if (!this.set.contains(item)) {
+                this.set.add(item);
+            }
+        }
+    }
 
-// Adds an item to the set or does nothing it already there. 5 pts.	
-public void add(int item) {
-	if (!set.contains(item)){
-		set.add(item);
-	}
-} // adds item to the set or does nothing if it is in set
+    /**
+     * Intersects this set with another.
+     * The intersection includes elements in both sets.
+     * 
+     * @param intSetb the second set to intersect with.
+     */
+    public void intersect(IntegerSet intSetb) {
+        set.retainAll(intSetb.set);
+    }
 
-	// Removes an item from the set or does nothing if not there. 5 pts.
-public void remove(int item) {
-	set.remove(Integer.valueOf(item));
-} 
+    /**
+     * Calculates the set difference (this set minus intSetb).
+     * Includes elements present in this set but not the other set.
+     * 
+     * @param intSetb the second set to find the difference with.
+     */
+    public void diff(IntegerSet intSetb) {
+        set.removeAll(intSetb.set);
+    }
 
-// Set union. 11 pts.
-public void union(IntegerSet intSetb) {
-	
-}
+    /**
+     * Calculates teh set complement.
+     * The complement includes elements present only in the second set.
+     * 
+     * @param intSetb the second set to find the complement with.
+     */
+    public void complement(IntegerSet intSetb) {
+        ArrayList<Integer> setComplement = new ArrayList<>();
 
-// Set intersection, all elements in s1 and s2. 12 pts.
-public void intersect(IntegerSet intSetb) {
-	set.retainAll(intSetb.set);
-}
+        for (int item : intSetb.set) {
+            if (!this.set.contains(item)) {
+                setComplement.add(item);
+            }
+        }
+        this.set.clear();
+        this.set.addAll(setComplement);
+    }
 
-// Set difference, i.e., s1 –s2. 12 pts.
-public void diff(IntegerSet intSetb){
-	set.removeAll(intSetb.set);
-} // set difference, i.e. s1 - s2
+    /**
+     * Checks if the set is empty.
+     * 
+     * @return true if the set is empty, false if not empty.
+     */
+    public boolean isEmpty() {
+        return set.isEmpty();
+    }
 
-// Set complement, all elements not in s1. 11 pts.
-public void complement(IntegerSet intSetb) {
-	ArrayList<Integer> setComplement = new ArrayList<>();
-	
-	for (int item: intSetb.set){
-		if(!this.set.contains(item)){
-			setComplement.add(item);
-		}
-	}
-	this.set.clear();
-	this.set.addAll(setComplement);
-
-}
-
-// Returns true if the set is empty, false otherwise. 5 pts.
-boolean isEmpty(){
-	return set.isEmpty();
-}
-
-// Return String representation of your set.  This overrides the equal method from 
-// the Object class. 5 pts.
-@Override
-public String toString() {
-	return set.toString();
-}	// return String representation of your set
-
+    /**
+     * Returns the string representation of the set.
+     * 
+     * @return a string representing the elements of the set.
+     */
+    @Override
+    public String toString() {
+        return set.toString();
+    }
 }
