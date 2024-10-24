@@ -97,13 +97,15 @@ public void diff(IntegerSet intSetb){
 
 // Set complement, all elements not in s1. 11 pts.
 public void complement(IntegerSet intSetb) {
-	IntegerSet setComplement = new IntegerSet();
+	ArrayList<Integer> setComplement = new ArrayList<>();
+	
 	for (int item: intSetb.set){
 		if(!this.set.contains(item)){
 			setComplement.add(item);
 		}
 	}
-	return setComplement;
+	this.set.clear();
+	this.set.addAll(setComplement);
 
 }
 
