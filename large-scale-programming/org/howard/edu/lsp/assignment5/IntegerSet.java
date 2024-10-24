@@ -3,6 +3,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Assignment 5 Large SCale Programming
+ * @author Veronique Andrews
  * IntegerSet contains adding, removing, union, intersection, and other set operations.
  */
 public class IntegerSet {
